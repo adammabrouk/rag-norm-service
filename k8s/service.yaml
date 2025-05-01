@@ -4,6 +4,10 @@ kind: Service
 metadata:
   name: docling-service
   namespace: docling
+  annotations:
+    # Istio annotations for traffic management
+    traffic.sidecar.istio.io/includeInboundPorts: "80"
+    traffic.sidecar.istio.io/excludeOutboundPorts: "5001"
 spec:
   selector:
     app: docling-serve
@@ -11,4 +15,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 5001
-  type: ClusterIP
+  type: LoadBalancer
