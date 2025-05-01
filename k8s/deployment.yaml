@@ -19,3 +19,6 @@ spec:
         image: ghcr.io/docling-project/docling-serve-cpu
         ports:
         - containerPort: 5001
+        env:
+            - name: DOCLING_SERVE_ENABLE_UI
+              value: "true"
